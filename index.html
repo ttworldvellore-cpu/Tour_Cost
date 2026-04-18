@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TT World — Goa Trip</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-<input type="file" id="logoInput" accept="image/*" style="display:none" onchange="handleLogoUpload(event)">
 <style>
 :root{
 --bg:#f4f6fb;--surface:#ffffff;--glass:rgba(255,255,255,0.7);
@@ -334,35 +333,15 @@ display:flex;justify-content:space-between;align-items:center;gap:10px;box-shado
 </div>
 
 <header class="header" id="header">
-  <div class="h-left">
-    
-    <!-- Logo (NO click here now) -->
-    <div class="logo-wrap" id="headerLogo"></div>
-
-    <span class="h-brand">
-      <span class="tt">TT</span> World
-    </span>
-
-  </div>
-
-  <div class="h-right">
-
-    <!-- Upload Button -->
-    <button class="h-nav-btn" onclick="document.getElementById('logoInput').click()">
-      Upload Logo
-    </button>
-
-    <!-- File name display -->
-    <span id="logoFileName" style="font-size:12px;color:#ccc;"></span>
-
-    <button class="h-nav-btn" onclick="opContact()">Contact</button>
-    <button class="h-nav-btn cta" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-      &#8593; Top
-    </button>
-    
-    <button class="hamburger" onclick="togSb()" aria-label="Open menu">&#9776;</button>
-
-  </div>
+<div class="h-left">
+<div class="logo-wrap" id="headerLogo" onclick="trigLogoUp()" title="Click to upload logo"></div>
+<span class="h-brand"><span class="tt">TT</span> World</span>
+</div>
+<div class="h-right">
+<button class="h-nav-btn" onclick="opContact()">Contact</button>
+<button class="h-nav-btn cta" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593; Top</button>
+<button class="hamburger" onclick="togSb()" aria-label="Open menu">&#9776;</button>
+</div>
 </header>
 
 <div class="sb-overlay" id="sbOv" onclick="togSb()"></div>
@@ -389,7 +368,7 @@ const PR={hpn:{casaMaria:1600,mayfieldBoutique:1900,rivasaResort:2200},tr:{picku
 const WA_NUM='919566596825';
 
 const ssP={
-northGoa:[{n:"Fort Aguada",i:"Fort Aguada.jpeg"},{n:"Saligao Church",i:"saligao church.jpeg"},{n:"Sinquirim Beach",i:"Sinquirim Beach.jpeg"},{n:"Baga Beach",i:"Bagabeach.jpeg"},{n:"Old Goa Church",i:"oldgoachurch.jpeg"},{n:"Anjuna Beach",i:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300&h=200&fit=crop"},{n:"Vagator Beach",i:"https://images.unsplash.com/photo-1534190239940-9ba8944ea261?w=300&h=200&fit=crop"}],
+northGoa:[{n:"Fort Aguada",i:"https://r1imghtlak.mmtcdn.com/1493b06f-8b80-43af-ac8d-29ab83522822.jpeg"},{n:"Saligao Church",i:"https://r1imghtlak.mmtcdn.com/4964c816-69de-49eb-b32b-bd2ff954578e.jpeg"},{n:"Sinquirim Beach",i:"https://r1imghtlak.mmtcdn.com/e9c06472-51e0-414a-860d-32ba48984d1d.jpg"},{n:"Baga Beach",i:"https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=300&h=200&fit=crop"},{n:"Old Goa Church",i:"https://r1imghtlak.mmtcdn.com/552631e3-28a6-42df-8f61-f5fe4eb7e504.jpeg"},{n:"Anjuna Beach",i:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300&h=200&fit=crop"},{n:"Vagator Beach",i:"https://images.unsplash.com/photo-1534190239940-9ba8944ea261?w=300&h=200&fit=crop"}],
 southGoa:[{n:"Miramar Beach",i:"https://images.unsplash.com/photo-1519046904884-53103b34b206?w=300&h=200&fit=crop"},{n:"Basilica of Bom Jesus",i:"https://r1imghtlak.mmtcdn.com/1bb89522-71a1-42c2-b099-c10f27753618.jpg"},{n:"Se Cathedral",i:"https://r1imghtlak.mmtcdn.com/901e32c7-2656-4ba0-9f11-139c685366bc.jpeg"},{n:"Shantadurga Temple",i:"https://images.unsplash.com/photo-1548013146-72479768bada?w=300&h=200&fit=crop"},{n:"Dolphin Sightseeing",i:"https://images.unsplash.com/photo-1560704995-43e2e7affeb6?w=300&h=200&fit=crop"},{n:"Mangeshi Temple",i:"https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=300&h=200&fit=crop"},{n:"Boat Cruise",i:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300&h=200&fit=crop"}],
 grandIslandFullDay:[{n:"Jet Ski",i:"https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=300&h=200&fit=crop"},{n:"Banana Boat",i:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300&h=200&fit=crop"},{n:"Scuba Diving",i:"https://images.unsplash.com/photo-1560704995-43e2e7affeb6?w=300&h=200&fit=crop"},{n:"Bumper Ride",i:"https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=300&h=200&fit=crop"},{n:"Snorkeling",i:"https://images.unsplash.com/photo-1560704995-43e2e7affeb6?w=300&h=200&fit=crop"},{n:"Parasailing",i:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300&h=200&fit=crop"},{n:"Speed Boat",i:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300&h=200&fit=crop"}],
 grandIslandHalfDay:[{n:"Jet Ski",i:"https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=300&h=200&fit=crop"},{n:"Banana Boat",i:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300&h=200&fit=crop"},{n:"Bumper Ride",i:"https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=300&h=200&fit=crop"},{n:"Scuba Diving",i:"https://images.unsplash.com/photo-1560704995-43e2e7affeb6?w=300&h=200&fit=crop"},{n:"Snorkeling",i:"https://images.unsplash.com/photo-1560704995-43e2e7affeb6?w=300&h=200&fit=crop"},{n:"Parasailing",i:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300&h=200&fit=crop"},{n:"Speed Boat",i:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300&h=200&fit=crop"}],
