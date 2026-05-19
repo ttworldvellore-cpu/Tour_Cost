@@ -408,9 +408,10 @@ function applyLogo(){
 }
 
 function initLogo(){
- initLogo();
+  applyLogo();
 }
 
+initLogo();
 function ssPr(pk){const bp=PR.ssp[pk],tt=S.ssT[pk]||'ownTransfer';let tp=0;if(tt==='privateBike')tp=PR.sst.privateBike*(S.bkC[pk]||1);else if(tt==='cabWithDriver')tp=PR.sst.cabWithDriver*(S.cbC[pk]||1);else if(tt==='cabWithoutDriver')tp=PR.sst.cabWithoutDriver*(S.cbC[pk]||1);return{total:(bp*ppl())+tp,bp,tp};}
 function stH(r){const f=Math.floor(r),h=r%1>=0.3;let s='';for(let i=0;i<f;i++)s+='\u2605';if(h)s+='\u2605';for(let i=f+(h?1:0);i<5;i++)s+='\u2606';return '<span class="hp-stars">'+s+'</span><span class="hp-score">'+r+'/5</span>';}
 function fmtPkName(pk){return pk.replace(/([A-Z])/g,' $1').replace(/^./,s=>s.toUpperCase()).trim();}
